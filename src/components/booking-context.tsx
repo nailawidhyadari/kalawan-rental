@@ -5,6 +5,7 @@ import { NEEDS, type Car, type NeedKey, type Service } from "@/lib/cars";
 import { iso, quote, type Quote } from "@/lib/pricing";
 
 type Ctx = {
+  photos: Record<string, boolean>;
   svc: Service; setSvc: (s: Service) => void;
   d1: string; d2: string; setD1: (v: string) => void; setD2: (v: string) => void;
   time: string; setTime: (v: string) => void;
@@ -32,7 +33,7 @@ export const useBooking = () => {
   return c;
 };
 
-export function BookingProvider({ children }: { children: React.ReactNode }) {
+export function BookingProvider({ children, photos }: { children: React.ReactNode; photos: Record<string, boolean> }) {
   const [svc, setSvc] = useState<Service>("lepas");
   const defD1 = useSyncExternalStore(noop, () => dayFromNow(1), () => "");
   const defD2 = useSyncExternalStore(noop, () => dayFromNow(3), () => "");
@@ -90,10 +91,10 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
   const q = useCallback((car: Car) => quote(car, { svc, d1, d2, deliver }), [svc, d1, d2, deliver]);
 
   const value = useMemo<Ctx>(() => ({
-    svc, setSvc, d1, d2, setD1, setD2: setD2o, time, setTime, pax, setPax, deliver, setDeliver,
+    photos, svc, setSvc, d1, d2, setD1, setD2: setD2o, time, setTime, pax, setPax, deliver, setDeliver,
     need, toggleNeed, cat, setCat, trans, setTrans, sort, setSort,
     cmp, toggleCmp, clearCmp: () => setCmp([]), cur, setCur, showCmp, setShowCmp, q, toast,
-  }), [svc, d1, d2, setD1, time, pax, setPax, deliver, need, toggleNeed, cat, trans, sort, cmp, toggleCmp, cur, showCmp, q, toast]);
+  }), [photos, svc, d1, d2, setD1, time, pax, setPax, deliver, need, toggleNeed, cat, trans, sort, cmp, toggleCmp, cur, showCmp, q, toast]);
 
   return (
     <BookingCtx.Provider value={value}>

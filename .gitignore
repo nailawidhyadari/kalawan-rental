@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# foto asli sebelum dikompres (hanya hasil di public/cars yang dipakai situs)
+/photos

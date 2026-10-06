@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo } from "react";
 import { CARS, CATS, NEEDS } from "@/lib/cars";
 import { DRIVER, idr } from "@/lib/pricing";
@@ -45,10 +46,12 @@ export function Fleet() {
           const rec = picks.includes(c.id);
           return (
             <article className="car" key={c.id}>
-              <div className="pic">
+              <div className={`pic${b.photos[c.id] ? " has-photo" : ""}`}>
                 <span className="mono idx">{String(i + 1).padStart(2, "0")}</span>
                 {rec ? <span className="badge rec">Cocok untuk Anda</span> : c.stock === "low" ? <span className="badge warn">Tersisa 1 unit</span> : <span className="badge ok">Tersedia</span>}
-                <CarArt type={c.type} />
+                {b.photos[c.id]
+                  ? <Image src={`/cars/${c.id}.jpg`} alt={c.name} fill sizes="(max-width: 680px) 100vw, (max-width: 1020px) 50vw, 40vw" />
+                  : <CarArt type={c.type} />}
               </div>
               <div>
                 <p className="mono">{c.cat} · {c.year}</p>

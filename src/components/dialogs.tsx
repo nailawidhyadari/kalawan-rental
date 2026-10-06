@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { CARS } from "@/lib/cars";
 import { DEPOSIT, DRIVER, fmtD, idr } from "@/lib/pricing";
@@ -47,6 +48,7 @@ export function BookingDrawer() {
             <div><p className="mono">{car.cat} · {b.svc === "sopir" ? "Dengan sopir" : "Lepas kunci"}</p><h3 id="dTitle">{car.name}</h3></div>
             <button className="x" onClick={() => b.setCur(null)} aria-label="Tutup">×</button>
           </div>
+          {b.photos[car.id] && <div className="dphoto"><Image src={`/cars/${car.id}.jpg`} alt={car.name} fill sizes="480px" /></div>}
           <p style={{ color: "var(--muted)", fontSize: 14 }}>{fmtD(b.d1)} {b.time} → {fmtD(b.d2)}, {k.days} hari</p>
           <div className="lines">
             <div><span>Sewa {idr(car.price)} × {k.days} hari</span><span>{idr(k.base)}</span></div>

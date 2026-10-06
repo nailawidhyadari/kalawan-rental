@@ -1,11 +1,12 @@
 import { BookingProvider } from "@/components/booking-context";
 import { BookingForm } from "@/components/booking-form";
 import { BookingDrawer, CompareDialog } from "@/components/dialogs";
-import { HeroDrawing } from "@/components/car-art";
+import { HeroCar } from "@/components/hero-car";
 import { Fleet } from "@/components/fleet";
 import { Needs } from "@/components/needs";
 import { DocsTabs, OpenStatus } from "@/components/small-client";
 import { SumBar } from "@/components/sum-bar";
+import { getPhotos } from "@/lib/photos";
 import { SITE, waLink } from "@/lib/site";
 
 const FAQ = [
@@ -32,7 +33,7 @@ const REVIEWS = [
 export default function Home() {
   const hello = waLink("Halo Kalawan, saya mau tanya soal sewa mobil.");
   return (
-    <BookingProvider>
+    <BookingProvider photos={getPhotos()}>
       <SumBar />
 
       <header className="top">
@@ -52,7 +53,7 @@ export default function Home() {
               <p className="mono">Rental mobil · Yogyakarta · sejak 2014</p>
               <h1>Mobil siap, harga <em>tanpa</em> kejutan di akhir.</h1>
               <p className="lead">Pilih lepas kunci atau dengan sopir, tentukan tanggal, dan total biaya langsung terlihat. Tidak ada biaya tersembunyi yang baru muncul saat serah terima.</p>
-              <HeroDrawing />
+              <HeroCar />
               <div className="facts">
                 <div><b>38</b><span>unit armada, dirawat berkala</span></div>
                 <div><b>07–21</b><span>jam layanan, antar sampai malam</span></div>

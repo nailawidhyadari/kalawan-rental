@@ -229,3 +229,28 @@ dialog.modal{margin:auto;width:min(920px,calc(100vw - 24px));max-height:calc(100
   .sumbar .btn{padding:8px 12px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* hero car: interaktif */
+.hero-car .hc-top{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px}
+.hero-car .hc-hint{color:var(--copper)}
+.hc-stage{cursor:pointer;border-radius:2px;-webkit-tap-highlight-color:transparent}
+.hc-stage:hover svg .layer{filter:drop-shadow(0 0 6px rgba(208,138,91,.25))}
+.hero-car .layer{transition:opacity .45s ease}
+.hero-car .dim{transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+.hc-chips{margin:10px 0 16px}
+.hc-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;border-top:1px solid var(--line-soft);padding-top:14px;animation:hcIn .35s ease}
+.hc-info span{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px}
+.hc-info b{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.2}
+.hc-info small{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400;margin-left:2px}
+.hc-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:14px}
+@keyframes hcIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (max-width:680px){.hc-info{grid-template-columns:1fr 1fr}.hero-car .hc-top{flex-direction:column;gap:2px}}
+@media (max-width:680px){.hero-car svg text{font-size:18px}}
+
+/* foto mobil asli */
+.car .pic.has-photo{padding:0;aspect-ratio:16/10;overflow:hidden;background:#e9e6e1}
+.car .pic.has-photo img{object-fit:cover;object-position:center 60%}
+.car .pic.has-photo .idx{color:#1d1814;z-index:1;background:rgba(239,230,214,.9);padding:2px 7px;top:12px;left:12px;border-radius:2px}
+.car .pic.has-photo .badge{z-index:1;background:var(--bg);top:12px;right:12px}
+.dphoto{position:relative;aspect-ratio:16/10;margin:0 0 14px;background:#e9e6e1;overflow:hidden;border-radius:2px}
+.dphoto img{object-fit:cover}
